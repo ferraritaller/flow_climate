@@ -325,6 +325,11 @@ RSpec.describe Types::QueryType do
         me {
           id
           fullName
+          companies {
+            id
+            name
+            slug
+          }
           avatar {
             imageSource
           }
@@ -436,6 +441,7 @@ RSpec.describe Types::QueryType do
         expect(result.dig('data', 'me')).to eq({
                                                  'id' => user.id.to_s,
                                                  'fullName' => user.full_name,
+                                                 'companies' => [],
                                                  'avatar' => {
                                                    'imageSource' => user.avatar.url
                                                  }
